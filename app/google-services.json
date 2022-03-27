@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "609528374361",
+    "project_id": "elpartani",
+    "storage_bucket": "elpartani.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609528374361:android:0761893510d0bc81957d48",
+        "android_client_info": {
+          "package_name": "com.example.el_partani_screens"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609528374361-r9offbjcjjobmha70nrt3b8lnk91rcek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcrRCiAiRcMMygLHQ1yK1nTyei6Yvj3U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609528374361-r9offbjcjjobmha70nrt3b8lnk91rcek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

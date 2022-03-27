@@ -75,7 +75,7 @@ public class WeTrip extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void addProfession2Firebase(Profession pr1) {
-//
+//2
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
 
         // Post p = new Post(et_title.getText().toString(),et_body.getText().toString(), uid, "" );

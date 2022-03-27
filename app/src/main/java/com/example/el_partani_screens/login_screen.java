@@ -95,9 +95,13 @@ public class login_screen extends AppCompatActivity {
         }
     }
     private void sendUserToNextActivity () {
-        Intent intent = new Intent(login_screen.this, studentSchedule.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+        if(FirebaseAuth.getInstance().getCurrentUser().getUid().equals("iG5d65Ml2JhzechQzHGNBVqYVci2"))
+            startActivity(new Intent(getApplicationContext(), WeTrip.class));
+        else{
+            Intent intent = new Intent(login_screen.this, studentSchedule.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
     }
 }
 

@@ -27,7 +27,7 @@ public class addPrivateHourForAdmin extends AppCompatActivity implements View.On
         ETnewPrivateHourDayAndHour = findViewById(R.id.ETnewPrivateHourDayAndHour);
         ETnewPrivateHourTime = findViewById(R.id.ETnewPrivateHourTime);
         ETnewPrivateHourAvailableOrNot = findViewById(R.id.ETnewPrivateHourAvailableOrNot);
-        btn_goBackToMainForAdminFromeANPH = findViewById(R.id.btn_goBackToMainForAdminFromeANPH);
+        //btn_goBackToMainForAdminFromeANPH = findViewById(R.id.btn_goBackToMainForAdminFromeANPH);
         btn_saveNewPrivateHour = findViewById(R.id.btn_saveNewPrivateHour);
         btn_saveNewPrivateHour.setOnClickListener(this);
     }

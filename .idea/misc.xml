@@ -11,6 +11,8 @@
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_we_trip.xml" value="0.2552083333333333" />
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/fragment_subjects__edit_.xml" value="0.259375" />
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/student_schedule_screen.xml" value="0.2552083333333333" />
+        <entry key="..\:/as/stam/app/src/main/res/drawable/bg_for_ams.xml" value="0.28177083333333336" />
+        <entry key="..\:/as/stam/app/src/main/res/drawable/bg_teacher_schedule.xml" value="0.28177083333333336" />
         <entry key="..\:/as/stam/app/src/main/res/drawable/button_bg.xml" value="0.2703125" />
         <entry key="..\:/as/stam/app/src/main/res/drawable/fb_add.xml" value="0.146875" />
         <entry key="..\:/as/stam/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2703125" />
@@ -19,6 +21,7 @@
         <entry key="..\:/as/stam/app/src/main/res/layout/activity_add_profession_for_admin.xml" value="0.25416666666666665" />
         <entry key="..\:/as/stam/app/src/main/res/layout/activity_add_techer_for_admin.xml" value="0.264" />
         <entry key="..\:/as/stam/app/src/main/res/layout/activity_admin_main_screen.xml" value="0.25416666666666665" />
+        <entry key="..\:/as/stam/app/src/main/res/layout/activity_admin_testing_screen.xml" value="0.13802083333333334" />
         <entry key="..\:/as/stam/app/src/main/res/layout/activity_login_screen.xml" value="0.25416666666666665" />
         <entry key="..\:/as/stam/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/as/stam/app/src/main/res/layout/activity_opening_screen.xml" value="0.25416666666666665" />

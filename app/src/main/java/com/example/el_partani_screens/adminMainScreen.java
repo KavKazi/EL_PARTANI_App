@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class adminMainScreen extends AppCompatActivity implements View.OnClickListener {
     private Button btn_goToAddTecharScreen,btn_goToAddProfessionScreen,btn_goToAddPrivateHourScreen;
-
+    //TODO - connect realtime database to app
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -28,6 +28,7 @@ public class login_screen extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
 
+    //todo - admin screen -> gridview of buttons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

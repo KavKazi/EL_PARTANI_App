@@ -5,14 +5,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +29,10 @@ public class login_screen extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser mUser;
 
+    TextView tv_forgot_pass;
     //todo - admin screen -> gridview of buttons
+
+    //todo - remove the 3 buttons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +40,15 @@ public class login_screen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        tv_forgot_pass = findViewById(R.id.tv_forgot_pass);
+        tv_forgot_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String email = inputEmail.getText().toString();
+                if(checkEmail(email))
+                    resetPassword(email);
+            }
+        });
         inputName = findViewById(R.id.inputNameLIS);
         inputEmail = findViewById(R.id.inputEmailLIS);
         inputPassword = findViewById(R.id.inputPasswordLIS);
@@ -58,6 +73,62 @@ public class login_screen extends AppCompatActivity {
                 perForLogin();
             }
         });
+    }
+
+    /**
+     * todo - add documentation
+     */
+    private void resetPassword( String email) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            //Log.d(TAG, "Email sent.");
+                            Toast.makeText(getApplicationContext(), "Check Your Email", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    /**
+     * todo - add docomentation
+     * @param email
+     * @return
+     */
+    private boolean checkEmail(String email) {
+        if(email.trim().length()==0) {
+            Toast.makeText(login_screen.this, "please enter an email address",
+                    Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(!email.matches(emailPattern)) {
+            inputEmail.setError("ENTER CORRECT EMAIL");
+            return false;
+        }
+        if(!isEmailExists(email)){
+            //todo - correct
+            Toast.makeText(this, "this email not exists, please signUp", Toast.LENGTH_SHORT).show();
+        }
+        return true;
+    }
+
+    private boolean isEmailExists(String email) {
+        boolean isNewUser = false;
+        //check email already exist or not.
+        mAuth.fetchSignInMethodsForEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
+
+                    }
+                });
+        return isNewUser;
     }
 
     private void perForLogin() {
@@ -91,7 +162,7 @@ public class login_screen extends AppCompatActivity {
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(login_screen.this,
-                                        "" + task.getException(),
+                                        "" + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
 
                             }

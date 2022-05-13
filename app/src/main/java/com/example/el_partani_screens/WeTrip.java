@@ -23,6 +23,7 @@ public class WeTrip extends AppCompatActivity implements View.OnClickListener {
     ArrayList<Profession> professions;
     AllPRofessionAdapter adapter;
 
+    //todo - change app icon (use the logo)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

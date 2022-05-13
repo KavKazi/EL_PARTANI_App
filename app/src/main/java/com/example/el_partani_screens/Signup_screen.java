@@ -62,7 +62,7 @@ public class Signup_screen extends AppCompatActivity{
 
 
             if (!email.matches(emailPattern)) {
-                inputEmail.setError("ENTER CORECT EMIAL");
+                inputEmail.setError("ENTER CORRECT EMAIL");
                 inputEmail.requestFocus();
             } else if (password.isEmpty() || password.length() < 6) {
                 inputPassword.setError("ENTER PROPER PASSWORD");
@@ -83,7 +83,7 @@ public class Signup_screen extends AppCompatActivity{
                             Toast.makeText(Signup_screen.this, "sign up succesful", Toast.LENGTH_SHORT).show();
                         } else {
                             progressDialog.dismiss();
-                            Toast.makeText(Signup_screen.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup_screen.this, "" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

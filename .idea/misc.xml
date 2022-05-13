@@ -4,12 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_add_private_hour_for_admin.xml" value="0.2552083333333333" />
-        <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_admin_testing_screen.xml" value="0.259375" />
-        <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_login_screen.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_main.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_profession_screen.xml" value="0.259375" />
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/activity_we_trip.xml" value="0.2552083333333333" />
-        <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/fragment_subjects__edit_.xml" value="0.259375" />
         <entry key="..\:/Users/Ronny/AndroidStudioProjects/EL_PARTANI_App/app/src/main/res/layout/student_schedule_screen.xml" value="0.2552083333333333" />
         <entry key="..\:/as/stam/app/src/main/res/drawable/bg_for_ams.xml" value="0.28177083333333336" />
         <entry key="..\:/as/stam/app/src/main/res/drawable/bg_teacher_schedule.xml" value="0.28177083333333336" />
@@ -38,6 +35,10 @@
         <entry key="..\:/as/stam/app/src/main/res/layout/custom_row_profession.xml" value="0.16770833333333332" />
         <entry key="..\:/as/stam/app/src/main/res/layout/student_schedule_screen.xml" value="0.176" />
         <entry key="..\:/as/stam/app/src/main/res/layout/teacher_schedule_row.xml" value="0.25416666666666665" />
+        <entry key="..\:/as/stam/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1365" />
+        <entry key="..\:/as/stam/app/src/main/res/mipmap-anydpi-v26/ic_launcher_elpartani.xml" value="0.1365" />
+        <entry key="..\:/as/stam/app/src/main/res/mipmap-anydpi-v26/ic_launcher_elpartani_round.xml" value="0.1365" />
+        <entry key="..\:/as/stam/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1365" />
       </map>
     </option>
   </component>

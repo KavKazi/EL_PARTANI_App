@@ -7,7 +7,7 @@ android {
     compileSdk 31
     defaultConfig {
         applicationId "com.example.el_partani_screens"
-        minSdk 28
+        minSdk 25
         targetSdk 31
         versionCode 1
         versionName "1.0"

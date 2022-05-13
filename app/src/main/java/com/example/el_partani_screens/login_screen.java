@@ -10,7 +10,6 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -32,7 +31,6 @@ public class login_screen extends AppCompatActivity {
     TextView tv_forgot_pass;
     //todo - admin screen -> gridview of buttons
 
-    //todo - remove the 3 buttons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +82,7 @@ public class login_screen extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
+                        if (!task.isSuccessful()) {
                             //Log.d(TAG, "Email sent.");
                             Toast.makeText(getApplicationContext(), "Check Your Email", Toast.LENGTH_SHORT).show();
                         } else {
@@ -102,7 +100,7 @@ public class login_screen extends AppCompatActivity {
     private boolean checkEmail(String email) {
         if(email.trim().length()==0) {
             Toast.makeText(login_screen.this, "please enter an email address",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
             return false;
         }
         if(!email.matches(emailPattern)) {
@@ -111,24 +109,32 @@ public class login_screen extends AppCompatActivity {
         }
         if(!isEmailExists(email)){
             //todo - correct
-            Toast.makeText(this, "this email not exists, please signUp", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "this email not exists, please signUp", Toast.LENGTH_LONG).show();
+            return false;
         }
         return true;
     }
 
     private boolean isEmailExists(String email) {
-        boolean isNewUser = false;
+        final boolean[] isNU = {false};
         //check email already exist or not.
         mAuth.fetchSignInMethodsForEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                     @Override
                     public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-
-                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
-
+                        if (task.isSuccessful()) {
+                            progressDialog.dismiss();
+                            isNU[0] = true;
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(login_screen.this,
+                                    "" + task.getException().getMessage(),
+                                    Toast.LENGTH_SHORT).show();
+                            isNU[0] = false;
+                        }
                     }
                 });
-        return isNewUser;
+        return isNU[0];
     }
 
     private void perForLogin() {

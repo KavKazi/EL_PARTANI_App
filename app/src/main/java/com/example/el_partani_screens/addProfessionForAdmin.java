@@ -53,7 +53,7 @@ public class addProfessionForAdmin extends AppCompatActivity implements View.OnC
         //todo- input check
         String name = ETnewProfessionName.getText().toString();
         //String img = ETnewProfessionImg.getText().toString();
-        //צריך להוסחף תמונה למקצוע
+        //todo - צריך להוסחף תמונה למקצוע
 
         Profession p = new Profession(name);
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();

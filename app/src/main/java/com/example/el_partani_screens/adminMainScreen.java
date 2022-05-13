@@ -9,7 +9,8 @@ import android.widget.Button;
 
 public class adminMainScreen extends AppCompatActivity implements View.OnClickListener {
     private Button btn_goToAddTecharScreen,btn_goToAddProfessionScreen,btn_goToAddPrivateHourScreen;
-    //TODO - connect realtime database to app
+    //TODO - check if realtime database retrive and saves daya from all places
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

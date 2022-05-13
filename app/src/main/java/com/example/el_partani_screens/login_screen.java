@@ -1,27 +1,25 @@
 package com.example.el_partani_screens;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class login_screen extends AppCompatActivity {
     Button login_btn, toSignUp_btn;
-    EditText inputName,inputEmail,inputPassword;
+    EditText inputName, inputEmail, inputPassword;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
 
@@ -33,7 +31,8 @@ public class login_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_screen);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         inputName = findViewById(R.id.inputNameLIS);
         inputEmail = findViewById(R.id.inputEmailLIS);
@@ -79,27 +78,34 @@ public class login_screen extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        progressDialog.dismiss();
-                        sendUserToNextActivity();
-                        Toast.makeText(login_screen.this, "Login succesful", Toast.LENGTH_SHORT).show();
-                    } else{
-                        progressDialog.dismiss();
-                        Toast.makeText(login_screen.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+            mAuth.signInWithEmailAndPassword(email, password).
+                    addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                progressDialog.dismiss();
+                                sendUserToNextActivity();
+                                Toast.makeText(login_screen.this,
+                                        "Login succesful",
+                                        Toast.LENGTH_SHORT).show();
+                            } else {
+                                progressDialog.dismiss();
+                                Toast.makeText(login_screen.this,
+                                        "" + task.getException(),
+                                        Toast.LENGTH_SHORT).show();
 
-                    }
-                }
-            });
+                            }
+                        }
+                    });
         }
     }
-    private void sendUserToNextActivity () {
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid().equals("iG5d65Ml2JhzechQzHGNBVqYVci2"))
+
+    private void sendUserToNextActivity() {
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals("iG5d65Ml2JhzechQzHGNBVqYVci2"))
             startActivity(new Intent(getApplicationContext(), WeTrip.class));
-        else{
-            Intent intent = new Intent(login_screen.this, studentSchedule.class);
+        else {
+            Intent intent = new Intent(login_screen.this,
+                    studentSchedule.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
         }

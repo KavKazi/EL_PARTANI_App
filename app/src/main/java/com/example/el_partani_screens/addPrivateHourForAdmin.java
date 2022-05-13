@@ -48,6 +48,7 @@ public class addPrivateHourForAdmin extends AppCompatActivity implements View.On
     }
 
     private boolean addPrivetHour2Db() {
+        //todo - adding an extra hour by teacher (excedded hours )
         //צריך לעבור על זה עם רוני אם זה בכלל הולך לfire base
 
         return true;

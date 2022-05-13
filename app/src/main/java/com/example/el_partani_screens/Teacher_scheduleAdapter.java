@@ -38,7 +38,7 @@ public class Teacher_scheduleAdapter extends ArrayAdapter<Teacher_schedule_row> 
             TextView txvDate = convertView.findViewById(R.id.txvDate);
             TextView txvtime = convertView.findViewById(R.id.txvtime);
 
-           /*
+           /*todo-
            לא הבנתי מה הוא עשה בסרטון כיאלו מריפה הוא לקח את המשתנים האלה בדקה 24:29
            שם הסרטון: andoid studio create listview dish beautiful
             TimgITS.setImageResource(d.image);

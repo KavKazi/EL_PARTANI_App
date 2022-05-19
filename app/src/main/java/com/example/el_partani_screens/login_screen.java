@@ -107,6 +107,7 @@ public class login_screen extends AppCompatActivity {
             Toast.makeText(login_screen.this, "please enter an email address",
                     Toast.LENGTH_SHORT).show();
             return false;
+
         }
         if (!email.matches(emailPattern)) {
             inputEmail.setError("ENTER CORRECT EMAIL");

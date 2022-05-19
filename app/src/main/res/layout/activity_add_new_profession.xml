@@ -105,10 +105,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ATCnewProfessionLevel" />
 
-    <GridView
-        android:id="@+id/GVanpS"
+    <ListView
+        android:id="@+id/LVanpS"
         android:layout_width="411dp"
         android:layout_height="223dp"
+        android:cacheColorHint="@color/white"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

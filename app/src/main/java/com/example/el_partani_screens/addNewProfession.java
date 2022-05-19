@@ -10,9 +10,13 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.r0adkll.slidr.Slidr;
+
+import java.util.ArrayList;
 
 public class addNewProfession extends AppCompatActivity {
     private static final String[]PROFESSION=new String[]{
@@ -21,7 +25,9 @@ public class addNewProfession extends AppCompatActivity {
     private static final String[]LEVELS=new String[]{
             "א", "ב", "ג", "3"," 4","5"
     };
-    GridView GVanpS;
+    ArrayList<Profession> ProfessionList;
+    professionAdapter professionAdapter;
+    ListView LVanpS;
     Button btn_saveNewProfession,btn_moveToPs;
 
     @Override
@@ -31,7 +37,27 @@ public class addNewProfession extends AppCompatActivity {
 
         AutoCompleteTextView edittext =findViewById(R.id.ACTnewProfessionName);
         AutoCompleteTextView edittext2 =findViewById(R.id.ATCnewProfessionLevel);
-        GVanpS =findViewById(R.id.GVanpS);
+
+        Profession p1= new Profession("אנגלית");
+        Profession p2= new Profession("מדעי המחשב");
+        Profession p3= new Profession("ספורט");
+        Profession p4= new Profession("אזרחות");
+        Profession p5= new Profession("ספרות");
+        Profession p6= new Profession("לשון");
+
+        ProfessionList = new ArrayList<>();
+        ProfessionList.add(p1);
+        ProfessionList.add(p2);
+        ProfessionList.add(p3);
+        ProfessionList.add(p4);
+        ProfessionList.add(p5);
+        ProfessionList.add(p6);
+
+        //professionAdapter = new professionAdapter(this,"",0,ProfessionList);
+        LVanpS = findViewById(R.id.LVanpS);
+        LVanpS.setAdapter((ListAdapter) professionAdapter);
+
+        LVanpS =findViewById(R.id.LVanpS);
         btn_saveNewProfession =findViewById(R.id.btn_saveNewProfession);
         btn_moveToPs =findViewById(R.id.btn_moveToPs);
         ArrayAdapter<String>adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,PROFESSION);

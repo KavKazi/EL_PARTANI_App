@@ -22,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Signup_screen extends AppCompatActivity{
+    //todo - in xml change editext to password input
+
+    //add back option or prompt to user to slide left for backing
     Button sign_up_btn;
     EditText inputName,inputEmail,inputPassword,inputConfirmPassword;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -83,7 +86,7 @@ public class Signup_screen extends AppCompatActivity{
                             Toast.makeText(Signup_screen.this, "sign up succesful", Toast.LENGTH_SHORT).show();
                         } else {
                             progressDialog.dismiss();
-                            Toast.makeText(Signup_screen.this, "" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup_screen.this, "" + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });

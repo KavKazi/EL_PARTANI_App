@@ -19,42 +19,48 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.033" />
 
-    <ImageView
-        android:id="@+id/Tavatar"
-        android:layout_width="51dp"
-        android:layout_height="47dp"
-        android:src="@drawable/teacherpic1"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+    <View
+        android:id="@+id/ic_action_history"
+        app:srcCompat="@drawable/ic_action_history"
+        android:layout_width="50dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Tname"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="1.0">
+
+    </View>
+
+    <View
+        android:id="@+id/seteings"
+        android:layout_width="50dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="@+id/Tname"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/ic_baseline_menu_24">
+
+    </View>
 
     <TextView
         android:id="@+id/Tname"
-        android:layout_width="120dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="12dp"
-        android:text="שם :  "
-        android:textColor="#F8F8F8"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/Tavatar"
-        app:layout_constraintTop_toTopOf="@+id/Tavatar" />
-
-    <TextView
-        android:id="@+id/Tclaas"
-        android:layout_width="120dp"
-        android:layout_height="22dp"
-        android:layout_marginTop="12dp"
-        android:text="כיתה :  "
+        android:layout_width="224dp"
+        android:layout_height="46dp"
+        android:gravity="center"
+        android:text=" שלום_(השם של התלמיד)    "
         android:textColor="#F8F8F8"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toStartOf="@+id/Tname"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
         app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/Tavatar"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
 
     <ListView
         android:id="@+id/lvStudentSchedule"

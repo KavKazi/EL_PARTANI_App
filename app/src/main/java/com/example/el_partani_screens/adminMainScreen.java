@@ -16,12 +16,12 @@ public class adminMainScreen extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main_screen);
 
-        btn_goToAddTecharScreen = findViewById(R.id.btn_goToAddTecharScreen);
-        btn_goToAddProfessionScreen = findViewById(R.id.btn_goToAddProfessionScreen);
-        btn_goToAddPrivateHourScreen = findViewById(R.id.btn_goToAddPrivateHourScreen);
+       
         btn_goToAddTecharScreen.setOnClickListener(this);
 
-    }
+/* btn_goToAddTecharScreen = findViewById(R.id.btn_goToAddTecharScreen);
+        btn_goToAddProfessionScreen = findViewById(R.id.btn_goToAddProfessionScreen);
+        btn_goToAddPrivateHourScreen = findViewById(R.id.btn_goToAddPrivateHourScreen);*/    }
     public void onClick(View v) {
         if(v == btn_goToAddTecharScreen){
                 Intent intent = new Intent(adminMainScreen.this, addTecherForAdmin.class);

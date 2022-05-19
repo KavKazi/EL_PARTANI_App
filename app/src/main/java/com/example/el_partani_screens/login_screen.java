@@ -25,7 +25,7 @@ public class login_screen extends AppCompatActivity {
     EditText inputName, inputEmail, inputPassword;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     ProgressDialog progressDialog;
-
+    boolean isNewUser = true;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
 
@@ -45,7 +45,7 @@ public class login_screen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = inputEmail.getText().toString();
-                if(checkEmail(email))
+                if (checkEmail(email))
                     resetPassword(email);
             }
         });
@@ -78,7 +78,8 @@ public class login_screen extends AppCompatActivity {
     /**
      * todo - add documentation
      */
-    private void resetPassword( String email) {
+    private void resetPassword(String email) {
+        Log.d("tag", email);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         auth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -86,7 +87,8 @@ public class login_screen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             //Log.d(TAG, "Email sent.");
-                            Toast.makeText(getApplicationContext(), "Check Your Email", Toast.LENGTH_SHORT).show();
+                            Log.d("tag", "Check Your Email");
+                            Toast.makeText(getApplicationContext(), "An Email was sent to you for resetting the password", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -96,39 +98,57 @@ public class login_screen extends AppCompatActivity {
 
     /**
      * todo - add docomentation
+     *
      * @param email
      * @return
      */
     private boolean checkEmail(String email) {
-        if(email.trim().length()==0) {
+        if (email.trim().length() == 0) {
             Toast.makeText(login_screen.this, "please enter an email address",
                     Toast.LENGTH_SHORT).show();
             return false;
         }
-        if(!email.matches(emailPattern)) {
+        if (!email.matches(emailPattern)) {
             inputEmail.setError("ENTER CORRECT EMAIL");
             return false;
         }
-        if(!isEmailExists(email)){
-            //todo - correct
-            Toast.makeText(this, "this email not exists, please signUp", Toast.LENGTH_SHORT).show();
-        }
-        return true;
+        isEmailExists(email, new OnEmailCheckListener() {
+            @Override
+            public void onSuccess(boolean isRegistered) {
+                if(isRegistered){
+                    //The email was registered before
+                } else {
+                    //The email not registered before
+                    isNewUser = false;
+                }
+            }
+        });
+        return isNewUser;
     }
 
-    private boolean isEmailExists(String email) {
-        boolean isNewUser = false;
+    private void isEmailExists(final String email, final OnEmailCheckListener listener) {
         //check email already exist or not.
         mAuth.fetchSignInMethodsForEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                     @Override
                     public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                        int task_result = task.getResult().getSignInMethods().size();
+                        boolean check = task_result == 1 ? true : false;
+                        if (!check)
+                            Toast.makeText(login_screen.this, "email not existed, please sign up", Toast.LENGTH_SHORT).show();
 
-                        boolean isNewUser = task.getResult().getSignInMethods().isEmpty();
-
+                        listener.onSuccess(check);
+                        /*
+                        if (task.getResult().getSignInMethods().size() == 0) {  //1 if exists , 0 if not
+                            isNewUser = false;   //email not existed
+                            Log.d("tag", "email not existed, please sign up");
+                            Toast.makeText(login_screen.this, "email not existed, please sign up", Toast.LENGTH_SHORT).show();
+                        } else {
+                            isNewUser = true;
+                            Log.d("tag", "isNewUser2:" + isNewUser);
+                        }*/
                     }
                 });
-        return isNewUser;
     }
 
     private void perForLogin() {
@@ -181,6 +201,8 @@ public class login_screen extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+
 }
 
 

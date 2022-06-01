@@ -86,21 +86,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputPasswordLIS" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="177dp"
-        android:layout_height="36dp"
-        android:gravity="center"
-        android:text="or log in with: "
-        android:textColor="@color/white"
-        android:textStyle="bold"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbtnLIS"
-        app:layout_constraintVertical_bias="0.299" />
-
     <Button
         android:id="@+id/loginbtnLIS"
         android:layout_width="141dp"
@@ -120,11 +105,21 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/bg_dialog"
         android:text="sign up "
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginbtnLIS"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/loginbtnLIS" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="612dp"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_settings_foreground" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,10 +2,18 @@ package com.example.el_partani_screens;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,11 +36,12 @@ public class login_screen extends AppCompatActivity {
     boolean isNewUser = true;
     FirebaseAuth mAuth;
     FirebaseUser mUser;
-
+    FloatingActionButton fb_admin;
     TextView tv_forgot_pass;
+    Teacher t;
+    DatabaseReference teacherRef;
     //todo - admin screen -> gridview of buttons
 
-    //todo - remove the 3 buttons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +56,14 @@ public class login_screen extends AppCompatActivity {
                 String email = inputEmail.getText().toString();
                 if (checkEmail(email))
                     resetPassword(email);
+            }
+        });
+        fb_admin = findViewById(R.id.fb_admin);
+        fb_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //startActivity(new Intent(login_screen.this, AdminTesting_Screen.class));
+                startActivity(new Intent(login_screen.this, adminMainScreen.class));
             }
         });
         inputName = findViewById(R.id.inputNameLIS);
@@ -71,6 +88,33 @@ public class login_screen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 perForLogin();
+            }
+        });
+
+
+    }
+
+    private void isAdmin() {
+        String name = inputName.getText().toString();
+        String phone = inputPassword.getText().toString();
+        teacherRef = FirebaseDatabase.getInstance().getReference("Teachers/");
+
+        teacherRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot data : snapshot.getChildren())
+                {
+                     String adminName =  data.child("name").getValue().toString();
+                    String adminPhone =  data.child("phone").getValue().toString();
+                    if(adminName.equals(name) && adminPhone.equals(phone))
+                        fb_admin.setVisibility(View.VISIBLE);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -152,8 +196,15 @@ public class login_screen extends AppCompatActivity {
     }
 
     private void perForLogin() {
+        if(inputName.getText().toString().trim().length()>0 &&
+                inputPassword.getText().toString().trim().length()>0 &&
+        inputEmail.getText().toString().trim().length()==0){
+            isAdmin();
+            return;
+        }
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
+
 
 
         if (!email.matches(emailPattern)) {

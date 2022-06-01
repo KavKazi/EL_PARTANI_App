@@ -49,9 +49,9 @@ public class addTecherForAdmin extends AppCompatActivity implements View.OnClick
     private boolean addTeacher2Db() {
         //todo- input check
         String name = ETnewTecherName.getText().toString();
-        String claas = ETnewTecherClass.getText().toString();
-
-        Teacher t = new Teacher(name, claas);
+        String subject = ETnewTecherClass.getText().toString();
+        String phone = ETnewTecherAvatar.getText().toString();
+        Teacher t = new Teacher(name, subject, phone);
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid().toString();
         teacherRef = FirebaseDatabase.getInstance().getReference("Teachers").push();
         teacherRef.setValue(t);
